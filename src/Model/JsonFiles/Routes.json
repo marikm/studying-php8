@@ -1,0 +1,19 @@
+{
+    "home" : {
+        "name": "home",
+        "controller": "App\\Controller\\HomeController", 
+        "template": "home.html.twig"
+    },
+        
+    "calculadora" :{
+        "name": "calculadora",
+        "controller": "App\\Controller\\CalculadoraController", 
+        "template": "calculadora.html.twig"
+    },
+    
+    "404" : {
+        "name" : "404",
+        "controller" : "App\\Controller\\ErrorController",
+        "template" : "404.html.twig"
+    }
+}
