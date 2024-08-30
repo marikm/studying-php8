@@ -28,7 +28,7 @@
 
         public function getPath($route) {
             $routeSplit = explode('/', $route);
-            $pathRoute = $routeSplit[1];
+            $pathRoute = $routeSplit[3];
             if(empty($pathRoute)) {
                 return 'home';
             }
@@ -45,7 +45,7 @@
             if(array_key_exists($route, $this->routes)) {
                 return $this->routes[$route]['name'];
             }
-            return $this->routes['404']['name'];
+            return $this->routes['error']['name'];
         }
 
         public function getController($path) {
