@@ -4,7 +4,7 @@ namespace App\Db;
 class Db {
     protected \PDO $db;
 
-    public function __construct(string $user = "root", string $password = "", string $host = "localhost", string $dbname = "renda")
+    public function __construct(string $user = "root", string $password = "root_password", string $host = "mysql", string $dbname = "renda")
     {
         $dsn = "mysql:host=$host;dbname=$dbname";
         $this->db = new \PDO($dsn, $user, $password);

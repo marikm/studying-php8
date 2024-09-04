@@ -28,7 +28,7 @@
 
         public function getPath($route) {
             $routeSplit = explode('/', $route);
-            $pathRoute = $routeSplit[3];
+            $pathRoute = $routeSplit[1];
             if(empty($pathRoute)) {
                 return 'home';
             }
