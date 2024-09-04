@@ -1,6 +1,7 @@
 <?php
 
     namespace App\Controller;
+    use App\Model\CalculadoraModel;
 
     class CalculadoraController {
 
@@ -13,7 +14,6 @@
         public $tempo_para_renda_passiva;
         public $montante_final;
         public $valorAportado;
-
         public $anos;
 
         public function __construct() {
@@ -39,8 +39,11 @@
                     'montanteFinal' => $this->montante_final,
                     
                 ];
-            }
 
+                
+
+                $this->saveToBd($this->data);die;
+            }
         }
 
         public function calcular_tempo_ate_renda_passiva($montante_inicial, $aporte_mensal, $juros_anual, $acrescimo_anual, $renda_passiva_desejada): array {
@@ -61,9 +64,17 @@
             return array($anos, $montante);
         }
 
+        public function saveToBd(array $results) {
+            $model = new CalculadoraModel();
+            $model->insertCalculadoraResults($results);
+        }
+
+
         public function index() {
             return $this->data;
         }
+
+
 
     }
 
