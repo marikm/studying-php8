@@ -30,19 +30,19 @@
                     'title' => "Calculadora",
                     'titleForm' => "Calculadora de Renda Passiva Mensal",
                     'montanteInicial' => $this->montante_inicial,
-                    'aporte' => $this->aporte_mensal,
-                    'juros' => $this->juros_anual*100,
-                    'acrescimo' => $this->acrescimo_anual,
-                    'valorAportado' => $this->valorAportado,
-                    'rendaMensal' => $this->renda_passiva_desejada,
-                    'anos' => $this->tempo_para_renda_passiva,
+                    'aporteMensal' => $this->aporte_mensal,
+                    'jurosAnual' => $this->juros_anual*100,
+                    'acrescimoAnual' => $this->acrescimo_anual,
+                    'rendaPassiva' => $this->renda_passiva_desejada,
+                    'tempoParaRenda' => $this->tempo_para_renda_passiva,
                     'montanteFinal' => $this->montante_final,
+                    'valorAportado' => $this->valorAportado,
                     
                 ];
 
                 
 
-                $this->saveToBd($this->data);die;
+                $this->saveToBd($this->data);
             }
         }
 

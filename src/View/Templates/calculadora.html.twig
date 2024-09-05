@@ -24,12 +24,12 @@
 
     <p><b>Resultados</b></p>
     <p>Montante Inicial: <strong>R$ {{ data.montanteInicial | number_format(2, ',', '.') }}</strong></p>
-    <p>Aporte Mensal: <strong>R$ {{ data.aporte | number_format(2, ',', '.') }}</strong> </p>
-    <p>Taxa de juros Anual: <strong>{{ data.juros | number_format(2, ',', '.') }}%</strong></p>
-    <p>Acréscimo Anual nos Aportes: <strong>{{ data.acrescimo | number_format(2, ',', '.') }}%</strong></p>
-    <p>Renda Passiva Mensal Desejada: <strong>R$ {{ data.rendaMensal | number_format(2, ',', '.') }}</strong></p>
+    <p>Aporte Mensal: <strong>R$ {{ data.aporteMensal | number_format(2, ',', '.') }}</strong> </p>
+    <p>Taxa de juros Anual: <strong>{{ data.jurosAnual | number_format(2, ',', '.') }}%</strong></p>
+    <p>Acréscimo Anual nos Aportes: <strong>{{ data.acrescimoAnual | number_format(2, ',', '.') }}%</strong></p>
+    <p>Renda Passiva Mensal Desejada: <strong>R$ {{ data.rendaPassiva | number_format(2, ',', '.') }}</strong></p>
     <p>Valor aportado ao final do período: <strong>R$ {{data.valorAportado | number_format(2, ',', '.')}}</strong></p>
-    <p>Tempo para atingir a renda passiva mensal desejada:<strong> R$ {{data.anos}} anos</strong></p>
+    <p>Tempo para atingir a renda passiva mensal desejada:<strong> R$ {{data.tempoParaRenda}} anos</strong></p>
     <p>Montante final acumulado: <strong>R$ {{data.montanteFinal | number_format(2, ',', '.')}} </strong></p>
 
 {% endblock %}
