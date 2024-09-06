@@ -2,9 +2,9 @@
 
 {% block content %}
 
-   <table>
+   <table class='table'>
       <thead>
-          <tr>
+          <tr class="bg-info">
               <td>id</td>
               <td>Montante Inicial</td>
               <td>Aporte Inicial</td>
@@ -17,9 +17,8 @@
           </tr>
       </thead>
       <tbody>
-        {% for item in data %}
-          
-        <tr>
+        {% for item in data %}   
+        <tr class="table-primary">
             <td>{{item.id}}</td>
             <td>{{item.montanteInicial}}</td>
             <td>{{item.aporteMensal}}</td>
@@ -30,13 +29,8 @@
             <td>{{item.montanteFinal}}</td>
             <td>{{item.valorAportado}}</td>
         </tr>
-          
         {% endfor %}
 
       </tbody>
-
-
-
    </table>
-
 {% endblock %}
