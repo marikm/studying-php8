@@ -28,6 +28,22 @@ class Db {
         return $result;
     }
 
+    public function getTable(string $table): array {
+        $sql = "SELECT * FROM $table";
+        $data = $this->executeQuery($sql)->fetchAll(\PDO::FETCH_OBJ);
+
+        $result = [];
+        foreach($data as $line) {
+            $result = (array) $line;
+        }
+        // echo '<pre>';
+        // var_dump($result);
+        // echo '</pre>';
+        // die;
+        
+        return $data;
+    }
+
     public function getOne(int $id, string $table): array
     {
         $sql = "SELECT * FROM $table WHERE id = :id";

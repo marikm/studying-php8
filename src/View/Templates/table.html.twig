@@ -1,7 +1,42 @@
-{% for item in routes %}
-  {% for key, route in item %}
-    {% if route != 'error' and key != 'template' and key != 'controller' and key != 'id'%}
-      <a href="{{ route }}">{{ route }}</a><br>
-    {% endif %}
-  {% endfor %}
-{% endfor %}
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+   <table>
+      <thead>
+          <tr>
+              <td>id</td>
+              <td>Montante Inicial</td>
+              <td>Aporte Inicial</td>
+              <td>Juros Anual</td>
+              <td>Acrescimo Anual</td>
+              <td>Renda Passiva</td>
+              <td>Tempo para liberdade</td>
+              <td>Montante Final</td>
+              <td>Valor aportado</td>
+          </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+          
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.montanteInicial}}</td>
+            <td>{{item.aporteMensal}}</td>
+            <td>{{item.jurosAnual}}</td>
+            <td>{{item.acrescimoAnual}}</td>
+            <td>{{item.rendaPassiva}}</td>
+            <td>{{item.tempoParaRenda}}</td>
+            <td>{{item.montanteFinal}}</td>
+            <td>{{item.valorAportado}}</td>
+        </tr>
+          
+        {% endfor %}
+
+      </tbody>
+
+
+
+   </table>
+
+{% endblock %}

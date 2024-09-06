@@ -1,7 +1,6 @@
 <?php
     namespace App\Model;
 
-use App\Controller\CalculadoraController;
 use App\Db\Db;
 
     class CalculadoraModel {
