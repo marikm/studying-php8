@@ -1,0 +1,60 @@
+<?php
+    namespace App\Model;
+
+    use App\Db\Db;
+    use TypeError;
+
+    class UserModel {
+
+        public function __construct() {
+            
+        }
+
+        public function addQuotes($b) {
+            return "'".$b."'";
+        }
+
+        public function insertUser(array $data, Db $db) {
+            $fields = "nome,email,senha";
+            $arrayWithQuotes = array_map(array($this,'addQuotes'), $data);
+            $values = implode(",", $arrayWithQuotes);
+            
+            $db->insert($fields, $values, "usuarios");
+        }
+
+        public function checkUserExists(string $nome, Db $db) : bool {
+            try {
+                if (is_array($db->getOneUser($nome, "usuarios"))){
+                    return true;
+                }  
+            } 
+            catch (TypeError $e) {
+                return false;
+            }
+        
+        }
+
+        public function checkPassword(string $nome, string $senha, Db $db) : bool {
+            $userData = $db->getOneUser($nome, "usuarios");
+            $senhaDb = $userData['senha'];
+            if(md5($senha) == $senhaDb){
+                return true;
+            }
+            return false;
+        }
+
+        public function getNameOrErrorMessage(string $nome, string $senha, Db $db) : string {
+            $userVerify = $this->checkUserExists($nome, $db);
+            if(!$userVerify) {
+                return "Usuario não cadastrado";
+            }
+            $passVerify = $this->checkPassword($nome, $senha, $db);
+            if($passVerify){
+                $userData = $db->getOneUser($nome, "usuarios");
+                return $userData['nome'];
+            }      
+            
+            return "Senha incorreta.";  
+        }
+
+    }

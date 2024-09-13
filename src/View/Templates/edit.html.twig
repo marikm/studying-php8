@@ -1,0 +1,26 @@
+{% extends "base.html.twig"%}
+
+{% block content %}
+    
+    <p>{{data.montanteInicial}}</p>
+
+    <form action="" method="post">
+        <label for="montante_inicial">Montante Inicial (R$):</label><br>
+        <input type="number" step="0.01" id="montante_inicial" name="montante_inicial" value = {{data.montanteInicial}}><br><br>
+
+        <label for="aporte_mensal">Aporte Mensal (R$):</label><br>
+        <input type="number" step="0.01" id="aporte_mensal" name="aporte_mensal"><br><br>
+
+        <label for="juros_anual">Taxa de Juros Anual (%):</label><br>
+        <input type="number" step="0.01" id="juros_anual" name="juros_anual" required><br><br>
+
+        <label for="acrescimo_anual">Acréscimo Anual nos Aportes (%):</label><br>
+        <input type="number" step="0.01" id="acrescimo_anual" name="acrescimo_anual"><br><br>
+
+        <label for="renda_passiva_desejada">Renda Passiva Mensal Desejada (R$):</label><br>
+        <input type="number" step="0.01" id="renda_passiva_desejada" name="renda_passiva_desejada" required><br><br>
+
+        <input type="submit" value="Calcular">
+    </form>
+
+{% endblock %}

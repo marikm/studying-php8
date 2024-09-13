@@ -21,10 +21,7 @@ class Db {
 
             $result[$itemAsArray['name']] = $itemAsArray;
         }
-        // echo '<pre>';
-        //     var_dump($result);
-        //     echo '</pre>';
-        //     die;
+
         return $result;
     }
 
@@ -32,22 +29,19 @@ class Db {
         $sql = "SELECT * FROM $table";
         $data = $this->executeQuery($sql)->fetchAll(\PDO::FETCH_OBJ);
 
-        $result = [];
-        foreach($data as $line) {
-            $result = (array) $line;
-        }
-        // echo '<pre>';
-        // var_dump($result);
-        // echo '</pre>';
-        // die;
-        
         return $data;
     }
 
     public function getOne(int $id, string $table): array
     {
         $sql = "SELECT * FROM $table WHERE id = :id";
-        return $this->executeQuery($sql, [':id' => $id])->fetch();
+        return $this->executeQuery($sql, [':id' => $id])->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getOneUser(string $nome, string $table): array
+    {
+        $sql = "SELECT * FROM $table WHERE nome = :nome";
+        return $this->executeQuery($sql, [':nome' => $nome])->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function insert(string $fields, string $values, string $table): bool

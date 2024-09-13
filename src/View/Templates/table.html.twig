@@ -1,36 +1,42 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
+    <form action="editar" method="POST">
+        <table class='table'>
+            <thead>
+                <tr class="bg-info">
+                    <td>id</td>
+                    <td>Montante Inicial</td>
+                    <td>Aporte Inicial</td>
+                    <td>Juros Anual</td>
+                    <td>Acrescimo Anual</td>
+                    <td>Renda Passiva</td>
+                    <td>Tempo para liberdade</td>
+                    <td>Montante Final</td>
+                    <td>Valor aportado</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}   
+                <tr class="table-primary">
+                    <td>{{item.id}}</td>
+                    <td>{{item.montanteInicial}}</td>
+                    <td>{{item.aporteMensal}}</td>
+                    <td>{{item.jurosAnual}}</td>
+                    <td>{{item.acrescimoAnual}}</td>
+                    <td>{{item.rendaPassiva}}</td>
+                    <td>{{item.tempoParaRenda}}</td>
+                    <td>{{item.montanteFinal}}</td>
+                    <td>{{item.valorAportado}}</td>
+                    <td><button class="btn btn-info" value="{{item.id}}" name="idLinha" >Editar</button></td>
+                </tr>
+                {% endfor %}
 
-   <table class='table'>
-      <thead>
-          <tr class="bg-info">
-              <td>id</td>
-              <td>Montante Inicial</td>
-              <td>Aporte Inicial</td>
-              <td>Juros Anual</td>
-              <td>Acrescimo Anual</td>
-              <td>Renda Passiva</td>
-              <td>Tempo para liberdade</td>
-              <td>Montante Final</td>
-              <td>Valor aportado</td>
-          </tr>
-      </thead>
-      <tbody>
-        {% for item in data %}   
-        <tr class="table-primary">
-            <td>{{item.id}}</td>
-            <td>{{item.montanteInicial}}</td>
-            <td>{{item.aporteMensal}}</td>
-            <td>{{item.jurosAnual}}</td>
-            <td>{{item.acrescimoAnual}}</td>
-            <td>{{item.rendaPassiva}}</td>
-            <td>{{item.tempoParaRenda}}</td>
-            <td>{{item.montanteFinal}}</td>
-            <td>{{item.valorAportado}}</td>
-        </tr>
-        {% endfor %}
+            </tbody>
+        </table>
 
-      </tbody>
-   </table>
+    </form>
+
+   
 {% endblock %}

@@ -1,14 +1,11 @@
 <?php
     namespace App\Model;
 
-use App\Db\Db;
-
     class CalculadoraModel {
 
-        protected $db;
+        
         public function __construct()
         {
-            $this->db = new Db();
         
         }
 
@@ -21,7 +18,6 @@ use App\Db\Db;
                 array_push($values, $value);
             }
            
-            
             return [$columns, $values];
         }
 
@@ -33,13 +29,13 @@ use App\Db\Db;
             $fields = "";
             $results = "";
 
-            for($i = 2; $i < sizeof($columns)-1; $i++) {
+            for($i = 0; $i < sizeof($columns)-1; $i++) {
                 $fields .= $columns[$i] . ',';
             }
             
             $fields .= $columns[sizeof($columns) -1];
 
-            for($i = 2; $i < sizeof($values)-1; $i++) {
+            for($i = 0; $i < sizeof($values)-1; $i++) {
                 $results .= $values[$i] . ',';
             }
             $results .= $values[sizeof($values) -1];
@@ -47,12 +43,14 @@ use App\Db\Db;
             return [$fields, $results];
         }
 
-        public function insertCalculadoraResults(array $data) {
+        public function insertCalculadoraResults(array $data, $db) {
             
             $fields = $this->columnsAndValuesTableToString($data)[0];
             $results = $this->columnsAndValuesTableToString($data)[1];
+            var_dump($fields);
+            var_dump($results);
 
-            $this->db->insert($fields, $results ,"calculadora");
+            var_dump($db->insert($fields, $results ,"calculadora"));
            
         }
     }
