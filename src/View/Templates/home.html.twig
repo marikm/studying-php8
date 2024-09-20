@@ -4,12 +4,11 @@
     {% if (data.greeting != null ) %}
     <p><strong>{{data.greeting}}</strong></p>
     {% endif %}
-    <p>{{data.nome}}</p>
+    <p>{{data.name}}</p>
     <p>{{data.title}}</p>
     <p>{{data.message}}</p>
-    <p>{{data.title}}</p>
-  
-    {% include 'login.html.twig' with {'routes': routes.routes, 'data.error': data.error} %}
+    
+
    
 
 {% endblock %}

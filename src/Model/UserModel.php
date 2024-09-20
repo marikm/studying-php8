@@ -10,10 +10,11 @@
             
         }
 
+        
         public function addQuotes($b) {
             return "'".$b."'";
         }
-
+        
         public function insertUser(array $data, Db $db) {
             $fields = "nome,email,senha";
             $arrayWithQuotes = array_map(array($this,'addQuotes'), $data);
@@ -42,19 +43,23 @@
             }
             return false;
         }
-
-        public function getNameOrErrorMessage(string $nome, string $senha, Db $db) : string {
+        
+        public function getErrorMessage(string $nome, string $senha, Db $db) : string {
             $userVerify = $this->checkUserExists($nome, $db);
             if(!$userVerify) {
                 return "Usuario não cadastrado";
             }
-            $passVerify = $this->checkPassword($nome, $senha, $db);
-            if($passVerify){
-                $userData = $db->getOneUser($nome, "usuarios");
-                return $userData['nome'];
-            }      
-            
-            return "Senha incorreta.";  
-        }
 
+            $passVerify = $this->checkPassword($nome, $senha, $db);
+            if(!$passVerify){
+                return "Senha incorreta.";  
+            }      
+        }
+        
+        public function getUserNameEmail($db, $nome) : array {
+            $userData = $db->getOneUser($nome, "usuarios");
+            $userData = ['nome'=> $userData['nome'], 'email' => $userData['email']];
+            
+            return $userData;
+        }
     }

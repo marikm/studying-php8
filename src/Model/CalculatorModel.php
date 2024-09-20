@@ -1,7 +1,7 @@
 <?php
     namespace App\Model;
 
-    class CalculadoraModel {
+    class CalculatorModel {
 
         
         public function __construct()

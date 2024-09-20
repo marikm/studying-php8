@@ -2,9 +2,9 @@
     
     namespace App\Controller;
     use App\Db\Db;
-    use App\Model\CalculadoraModel;
+    use App\Model\CalculatorModel;
 
-    class CalculadoraController {
+    class CalculatorController {
         public $db;
         public $model;
         public $calculadoraModel;
@@ -86,7 +86,7 @@
             //validando se POST está vazio
             if(isset($_POST) and !empty($_POST)) {
                 // $this->db = new Db();
-                $this->calculadoraModel = (new CalculadoraModel())->insertCalculadoraResults($this->data, $this->db);
+                $this->calculadoraModel = (new CalculatorModel())->insertCalculadoraResults($this->data, $this->db);
             }
             
             $this->data['title'] = $this->title;

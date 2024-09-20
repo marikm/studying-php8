@@ -4,35 +4,35 @@
 
     use App\Model\UserModel;
 
-    class UserController {
+    class RegisterController {
         public $db;
         public $data;
         public $userModel;
         
-        private $nome;
+        private $name;
         private $email;
-        private $senha;
+        private $pass;
 
         public function __construct() {
             $this->db = new Db();
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if(isset($_POST['nome'])) {
-                    $this->nome = (string)$_POST['nome'];
+                if(isset($_POST['name'])) {
+                    $this->name = (string)$_POST['name'];
                 }
                 if(isset($_POST['email'])) {
                     $this->email = (string)$_POST['email'];
                 }
-                if(isset($_POST['senha'])) {
-                    $this->senha = md5((string)$_POST['senha']);
+                if(isset($_POST['pass'])) {
+                    $this->pass = md5((string)$_POST['pass']);
                 }
             }
         }
 
         public function index() {
             $this->data = [
-                'nome' => $this->nome,
+                'name' => $this->name,
                 'email' => $this->email,
-                'senha' => $this->senha,
+                'pass' => $this->pass,
             ];
 
             if(isset($_POST) and !empty($_POST)) {

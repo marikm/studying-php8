@@ -1,24 +1,27 @@
+{% extends "base.html.twig" %}
 
-<h1 class="h3 mb-3 font-weight-normal">Deseja fazer login?</h1>
-<form class="form-signin" action="" method="post">
-    <div class="form-group row">
-        <label for="nome"  class="sr-only">Nome</label>
-        <div class="col-sm-3">
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome de usuário" required autofocus/>
+{% block content %}
+    <h1 class="h3 mb-3 font-weight-normal">Deseja fazer login?</h1>
+    <form class="form-signin" action="" method="post">
+        <div class="form-group row">
+            <label for="name"  class="sr-only">Nome</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Nome de usuário" required autofocus/>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="senha" class="sr-only">Senha: </label>
-        <div class="col-sm-3">
-            <input type="password"  class="form-control" name="senha" id="senha" placeholder="Senha" required/><br>
+        <div class="form-group row">
+            <label for="pass" class="sr-only">Senha: </label>
+            <div class="col-sm-3">
+                <input type="password"  class="form-control" name="pass" id="pass" placeholder="Senha" required/><br>
+            </div>
+            {% if (data.error != null ) %}
+            <p class="alert alert-danger" role="alert">{{data.error}}</p>
+            {% endif %}
         </div>
-        {% if (data.error != null ) %}
-        <p class="alert alert-danger" role="alert">{{data.error}}</p>
-        {% endif %}
-    </div>
 
-    <button type="submit" class="btn btn-primary">Acessar</button><br><br>
-    <p>Ou</p>
-    <a href="{{routes['cadastrar']['name']}}">Cadastre-se</a>
-    
-</form>
+        <button type="submit" class="btn btn-primary">Acessar</button><br><br>
+        <p>Ou</p>
+        <a href="{{routes['cadastrar']['name']}}">Cadastre-se</a>
+   
+    </form>
+{% endblock %}
