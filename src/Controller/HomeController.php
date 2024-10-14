@@ -18,7 +18,7 @@ use App\Model\UserModel;
             $this->data = [
                 'title' => 'Pagina Inicial',
                 'message' => 'Seja bem-vindo ao site Liberdade Financeira',
-            ];
+            ]; 
 
             $this->db = new Db();
 
@@ -28,12 +28,12 @@ use App\Model\UserModel;
             if(!isset( $_SESSION['logged'])){
                 $_SESSION['logged'] = false;
             }
-
+            
             if($_SESSION['logged'] == true) {
                 $this->data['greeting'] = "Bem vindo(a) " . $_SESSION['name'];
             }
             $this->data['logged'] = $_SESSION['logged'];
-            
+            // var_dump($this->data['logged']);
 
             return $this->data;
         }

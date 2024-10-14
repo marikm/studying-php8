@@ -32,6 +32,13 @@ class Db {
         return $data;
     }
 
+    public function getTableByUser(string $table, string $name): array {
+        $sql = "SELECT * FROM $table WHERE ";
+        $data = $this->executeQuery($sql)->fetchAll(\PDO::FETCH_OBJ);
+
+        return $data;
+    }
+
     public function getOne(int $id, string $table): array
     {
         $sql = "SELECT * FROM $table WHERE id = :id";

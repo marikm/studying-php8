@@ -84,11 +84,11 @@
             ];
 
             //validando se POST está vazio
-            if(isset($_POST) and !empty($_POST)) {
+            if(isset($_POST) and !empty($_POST) and $_SESSION['logged'] == true) {
                 // $this->db = new Db();
                 $this->calculadoraModel = (new CalculatorModel())->insertCalculadoraResults($this->data, $this->db);
             }
-            
+            $this->data['logged'] = $_SESSION['logged'];
             $this->data['title'] = $this->title;
             $this->data['titleForm'] = $this->titleForm;
 

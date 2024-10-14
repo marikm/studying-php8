@@ -19,5 +19,4 @@ use App\Db\Db;
             return $this->data;
         }
 
-
     }

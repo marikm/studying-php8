@@ -11,7 +11,7 @@
                 session_start();
             }
         }
-
+        //setVariableSession -> metodo generico, recebe o nome do array e o valor que vai ser atribuido 
         public function setLogged($name, $email) : void {
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
@@ -28,7 +28,7 @@
         }
 
         public function getLogged(): bool {
-            if(isset($_SESSION['name']) && isset($_SESSION['email'])) {
+            if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
                 return true;
             }
             return false;

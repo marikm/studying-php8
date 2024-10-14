@@ -5,9 +5,7 @@ use App\Db\Db;
 use App\Model\UserModel;
 
     class LoginController {
-        // efetuar login
         public $db;
-
         public $data;
         public $nome;
 

@@ -5,7 +5,7 @@
       {% if logged == true  and route != 'cadastrar' and route != 'login' %}
         <a  class="nav-link" href="{{ route }}">{{ route }}</a>
       {% endif %}
-      {% if logged == false and path != route and route != 'logout' %}
+      {% if logged == false and path != route and route != 'logout' and route != 'tabela' %}
         <a  class="nav-link" href="{{ route }}">{{ route }}</a>
       {% endif %}
 

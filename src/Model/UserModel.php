@@ -47,12 +47,12 @@
         public function getErrorMessage(string $nome, string $senha, Db $db) : string {
             $userVerify = $this->checkUserExists($nome, $db);
             if(!$userVerify) {
-                return "Usuario não cadastrado";
+                return "Usuario ou senha inválidos.";
             }
 
             $passVerify = $this->checkPassword($nome, $senha, $db);
             if(!$passVerify){
-                return "Senha incorreta.";  
+                return "Usuario ou senha inválidos.";  
             }      
         }
         

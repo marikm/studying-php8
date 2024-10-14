@@ -2,23 +2,29 @@
     namespace App\Controller;
 
     use App\Model\TableModel;
+    use App\Controller\SessionController;
 
     class TableController {
 
         public $data;
-
-        public function __construct()
-        {
-            session_start();
-            if(!isset($SESSION['autenticado']) || !$_SESSION['autenticado'] == true) {
-                header("Location: home");
-                die();
-            }
-            $this->data = (new TableModel())->getData();
-
-        }
-
+      
         public function index() {
+            $session = new SessionController();
+            $this->data['logged'] = $session->getLogged();
+            
+            if (!$this->data['logged']) {
+                header('Location: /home');
+                exit();
+            }
+            
+            $this->data = [
+                'name' => $_SESSION['name'],
+                'email' => $_SESSION['email'],
+                'logged' => $session->getLogged(),
+                'table' =>  (new TableModel())->getData()
+            ];
+            
+          
             return $this->data;
         }
 

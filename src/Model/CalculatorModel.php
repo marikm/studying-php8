@@ -47,10 +47,6 @@
             
             $fields = $this->columnsAndValuesTableToString($data)[0];
             $results = $this->columnsAndValuesTableToString($data)[1];
-            var_dump($fields);
-            var_dump($results);
-
-            var_dump($db->insert($fields, $results ,"calculadora"));
            
         }
     }
